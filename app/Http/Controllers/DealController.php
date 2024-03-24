@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Deal;
 
 class DealController extends Controller
 {
@@ -20,7 +22,7 @@ class DealController extends Controller
         ]);
 
         // Create a new deal
-        $deal = Deal::create($validatedDate);
+        $deal = Deal::create($validatedData);
 
         // return a response indicating success or failure
 
