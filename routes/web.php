@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DealController;
+use Illuminate\Support\Facades\Route;
 
 // Route for creating a new deal
 Route::post('/deals', [DealController::class, 'create'])->name('deals.create');
