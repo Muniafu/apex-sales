@@ -11,12 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create ('activities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('account_id')->constrained('organizations');
-            $table->foreignId('deal_id')->constrained('deals');
+            $table->unsignedBigInteger('user_id');
             $table->string('type');
+            $table->string('subject');
+            $table->date('due_date')->nullable();
+            $table->date('date');
+            $table->integer('duration')->nullable();
+            $table->text('notes')->nullable();
+            $table->string('status');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
