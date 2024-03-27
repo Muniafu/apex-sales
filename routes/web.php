@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 // Route for creating a new deal
 Route::post('/deals', [DealController::class, 'create'])->name('deals.create');
+Route::post('/quotes/{deal}', 'QuoteController@create')->name('quotes.create');
+Route::post('/invoices/convert/{quote}', 'InvoiceController@convertQuote')->name('invoices.convertQuote');
 
 // Route for updating an existing deal
 Route::put('/deals/{id}', [DealController::class, 'update'])->name('deals.update');
