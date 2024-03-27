@@ -6,22 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('deal_id')->constrained('deals');
-            $table->decimal('amount', 8, 2);
+            $table->foreignId('account_id')->constrained('accounts');
+            $table->foreignId('contact_id')->constrained('contacts');
+            $table->date('quote_date');
+            $table->date('expiry_date');
+            $table->decimal('total');
+            $table->boolean('is_approved')->default(false);
+            $table->enum('status', ['draft', 'sent', 'expired', 'accepted', 'rejected']);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('quotes');
